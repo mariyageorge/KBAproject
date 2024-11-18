@@ -1,4 +1,3 @@
-
 # 📚 EduFund: Decentralized Scholarship Platform  
 
 EduFund is a blockchain-powered decentralized application (DApp) designed to facilitate transparent and secure scholarship distribution. It allows students to submit requests for financial aid and enables sponsors to contribute directly to deserving students using smart contracts.
@@ -17,7 +16,7 @@ EduFund is a blockchain-powered decentralized application (DApp) designed to fac
 
 ## 🎥 Demo Video  
 
-Watch the full demonstration of the EduFund platform [here](https://youtu.be/uaohTA-ByK8).  
+Watch the full demonstration of the EduFund platform [here](https://youtu.be/mF5xfUQ3MdE?si=rUMSjA1DgUQXYryQ).  
 
 ---
 
