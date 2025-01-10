@@ -22,14 +22,16 @@ Before you begin, ensure you have the following installed:
 1. Navigate to the `contracts` folder and run the following command to install all necessary dependencies:
 
    ```bash
-   cd contracts
+   cd Contract
    npm install
    ```
 
 2. Then, navigate to the `frontend/donation` folder and install its dependencies as well:
 
    ```bash
-   cd frontend/donation
+   cd..
+   cd frontend
+   cd donation
    npm install
    ```
 
