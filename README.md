@@ -1,123 +1,120 @@
 
+
 # 📚 EduFund: Decentralized Scholarship Platform
 
-EduFund is a blockchain-powered decentralized application (DApp) designed to facilitate transparent and secure scholarship distribution. It allows students to submit requests for financial aid and enables sponsors to contribute directly to deserving students using smart contracts.
+EduFund is a blockchain-powered decentralized application (DApp) designed to facilitate transparent and secure scholarship distribution. It allows students to submit requests for financial aid and enables sponsors to contribute directly to deserving students using smart contracts. 
 
----
 
 ## Prerequisites
 
-Before you begin, ensure you have the following installed:
+Make sure you have the following installed on your computer:
 
-- [Node.js](https://nodejs.org/) (v16.x or higher recommended)
-- [MetaMask](https://metamask.io/) extension in your browser
-- A supported Ethereum-compatible blockchain network (e.g., Ganache or any testnet)
-
+1. **Node.js** – Needed to run the React frontend.
+2. **Hardhat** – A tool for deploying and testing Ethereum smart contracts.
+3. **MetaMask**  – A browser extension to manage your Ethereum accounts and interact with blockchain networks.
+4. **Ethereum Test Network** –  A test network such as Holskey to simulate a blockchain environment and test your DApp without using real Ether (ETH).
 ---
 
-## Steps to Run the EduFund DApp
+### Step-by-Step Guide to Run the System
 
-### 1. Install Dependencies
+#### Step 1: Clone the Repository
+Start by cloning the EduFund project repository to your computer.
 
-1. Navigate to the `contracts` folder and run the following command to install all necessary dependencies:
-
+1. **Clone the repository** by running this command in your terminal (or command prompt):
    ```bash
-   cd Contract
-   npm install
+   git clone https://github.com/your-username/kba-project-main.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd kba-project-main
    ```
 
-2. Then, navigate to the `frontend/donation` folder and install its dependencies as well:
+#### Step 2: Install Smart Contract Dependencies (Hardhat)
+In this step, we’ll set up the smart contracts for EduFund.
 
+1. Go to the **hardhat directory** where the blockchain code is located:
    ```bash
-   cd..
-   cd frontend
-   cd donation
-   npm install
+   cd hardhat
    ```
 
----
+2. Install the necessary dependencies by running:
+   ```bash
+   npm install
+   ```
+   This command installs Hardhat and other necessary libraries for developing and interacting with Ethereum-based smart contracts.
 
-### 2. Start the Development Server
+#### Step 3: Compile Smart Contracts
+Now that we have the necessary dependencies, we’ll compile the smart contracts. These contracts are written in Solidity and are responsible for the scholarship distribution process.
 
-To start the development server, use the following command:
+1. Run the following command to compile the smart contracts:
+   ```bash
+   npx hardhat compile
+   ```
+   This will generate the necessary files and make sure your smart contracts are ready to be deployed.
 
-```bash
-npm run dev
-```
+#### Step 4: Start Hardhat Network and Deploy Smart Contracts
+At this point, we'll set up a local Ethereum network to deploy and test the smart contracts. 
 
-This command will compile and deploy the application locally.
+1. Start the **local Hardhat network** (an Ethereum test network that runs on your computer):
+   ```bash
+   npx hardhat node
+   ```
+   The network will run at `http://localhost:8545`, which is where your smart contracts will be deployed.
 
----
+2. Open a new terminal window and navigate to the **hardhat directory** again:
+   ```bash
+   cd hardhat
+   ```
 
-### 3. Access the Application
+3. **Deploy the smart contracts** to the local network:
+   ```bash
+   npx hardhat run scripts/deploy.js --network localhost
+   ```
+   After running this command, Hardhat will display the contract's address (a string of numbers and letters). **Copy this address**, as you will need it for the frontend (React) part of the platform.
 
-Once the server is running, open your browser and navigate to:
+#### Step 5: Configure the React Frontend
+Now that the smart contracts are deployed, we need to connect the frontend (the user interface) to the blockchain.
+
+1. Navigate to the **frontend directory**:
+   ```bash
+   cd frontend/donation
+   ```
+
+2. Install the React dependencies:
+   ```bash
+   npm install
+   ```
+   This installs the libraries required for running the frontend (React).
+
+3. **Update the Smart Contract Address**:
+   After deployment, open the file `frontend/src/config.js` in a text editor. Find the section where the contract address is stored and **paste the contract address** you copied earlier.
+
+4. **Install ethers.js** (if it’s not already installed):
+   `ethers.js` is a library that allows your React app to interact with the Ethereum blockchain.
+   ```bash
+   npm install ethers
+   ```
+
+#### Step 6: Run the React Development Server
+Now it’s time to start the frontend.
+
+1. Run the following command to start the React development server:
+   ```bash
+   npm run dev
+   ```
+   This will start the frontend at [http://localhost:3000](http://localhost:3000).
+
+#### Step 7: Access the Application
+You can now access the EduFund platform by opening your browser and going to:
 
 [http://localhost:3000](http://localhost:3000)
 
----
-
-### 4. Choose the Admin Account
-
-1. Connect your MetaMask wallet to the application.
-2. Switch to the account designated as the admin.
-3. Navigate to the *Admin Dashboard*.
-4. Create a new scholarship request by providing the necessary details.
-
----
-
-### 5. Switch to the Sponsor Account
-
-1. Log out of the admin account or switch accounts in MetaMask.
-2. Connect your MetaMask wallet to a sponsor account.
-3. Access the *Sponsor Dashboard*.
-4. Review and contribute to available scholarship requests.
-
----
-
-## 🚀 Features
-
-- **MetaMask Wallet Integration**: Seamlessly connect to the Ethereum blockchain using MetaMask.
-- **Scholarship Requests**: Applicants can submit requests with details such as the amount required and purpose.
-- **Request Tracking**: View the status of submitted scholarship requests in real time.
-- **Sponsor Contributions**: Sponsors can browse verified applications and directly contribute funds to a student's wallet address.
-- **Transparency**: All transactions are stored on the blockchain for accountability and transparency.
+Once you open this page, you should be able to interact with the platform. You can donate, register, and track scholarship transactions.
 
 ---
 
 ## 🎥 Demo Video
-
-Watch the full demonstration of the EduFund platform [here](https://youtu.be/1Hq5Li3Nfjs?si=vE1P5NCoiILs7tHa).
-
----
-
-## 🛠 Tech Stack
-
-### Frontend
-
-- **HTML**: Structure of the web pages.
-- **CSS**: Styling for modern and responsive design.
-- **JavaScript**:
-  - **Web3.js/Ethers.js**: Used to interact with the Ethereum blockchain. It allows seamless integration with MetaMask, facilitates smart contract interactions, and handles transactions.
-  - **AJAX/Fetch**: Implements asynchronous data fetching to update request status and show live updates for sponsors and applicants.
-  - **Event Handlers**: JavaScript manages user interactions, including submitting scholarship requests, displaying real-time transaction status, and handling contributions from sponsors.
-
-### Blockchain Backend
-
-- **Solidity**: Smart contract development for managing requests and contributions.
-- **Ethereum**: Blockchain network for transaction management.
-- **Hardhat**: Development and testing framework for Ethereum smart contracts.
+Watch the full demonstration of how to use the EduFund platform [here](https://youtu.be/1Hq5Li3Nfjs?si=vE1P5NCoiILs7tHa).
 
 ---
-
-## 📝 Smart Contract
-
-### Functions
-
-1. **Submit Request**: Allows applicants to submit details such as name, wallet address, amount needed, and purpose.
-2. **Get Requests**: Retrieves scholarship applications for sponsors to review.
-3. **Contribute**: Enables sponsors to send funds directly to the applicant's wallet.
-4. **Update Status**: Updates the application status once the contribution is completed.
-
----
-
+ 
